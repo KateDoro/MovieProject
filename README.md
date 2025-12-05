@@ -72,3 +72,11 @@ let
 in
   #"Changed column type"
 ```
+### Recommendations
+
+<img width="358" height="143" alt="Screenshot 2025-12-04 at 10 19 50 PM" src="https://github.com/user-attachments/assets/78e13e6a-49e9-46a5-9686-386366a452bb" />
+
+<img width="400" height="144" alt="Screenshot 2025-12-04 at 10 35 36 PM" src="https://github.com/user-attachments/assets/55cd0e00-c520-4a7c-b090-cdf9ed58881d" />
+
+
+Top 5 genres are Action, Comedy, Drama, Sci-Fi, Adventure. I would recommend to Netflix to produce one of these genres as they brought in more in box office revenue based on the data from 2012 to 2016. Horror is the most succesful genre in terms of ROI. Summer releases deliver the highest commercial returnes, while April shows the biggest drop in revenue.
