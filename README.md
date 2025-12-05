@@ -34,3 +34,41 @@ u can download original datasource here:[Movie Dataset Excel file](https://githu
 ### Dashboard
 
 <img width="679" height="486" alt="Screenshot 2025-12-04 at 9 17 41 PM" src="https://github.com/user-attachments/assets/e3e4b270-0e24-4467-b78e-b7c2f201ebb3" />
+
+### M Code
+```
+let
+  Source = Excel.Workbook(File.Contents("/Users/anna/Downloads/Movies_Data_Homework.xlsx"), null, true),
+  #"Navigation 1" = Source{[Item = "Movie Data", Kind = "Sheet"]}[Data],
+  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+  #"Merged queries" = Table.NestedJoin(#"Promoted headers", {"Genre_First_ID"}, Genres, {"ID"}, "Genres", JoinKind.LeftOuter),
+  #"Expanded Genres" = Table.ExpandTableColumn(#"Merged queries", "Genres", {"Genre"}, {"Genre"}),
+  #"Removed columns" = Table.RemoveColumns(#"Expanded Genres", {"Column14", "Column15", "Column16", "Column17", "Column18", "Column19", "Column20", "Column21"}),
+  #"Reordered columns" = Table.ReorderColumns(#"Removed columns", {"Movie Title", "Release Date", "Wikipedia URL", "Genre_First_ID", "Genre", "Genre_Second_ID", "Director_First_ID", "Cast_First_ID", "Cast_Second_ID", "Cast_Third_ID", "Cast_Fourth_ID", "Cast_Fifth_ID", "Budget ($)", "Box Office Revenue ($)"}),
+  #"Merged queries 1" = Table.NestedJoin(#"Reordered columns", {"Genre_Second_ID"}, Genres, {"ID"}, "Genres", JoinKind.LeftOuter),
+  #"Expanded Genres 1" = Table.ExpandTableColumn(#"Merged queries 1", "Genres", {"Genre"}, {"Genre.1"}),
+  #"Renamed columns" = Table.RenameColumns(#"Expanded Genres 1", {{"Genre.1", "Genre second"}}),
+  #"Reordered columns 1" = Table.ReorderColumns(#"Renamed columns", {"Movie Title", "Release Date", "Wikipedia URL", "Genre_First_ID", "Genre", "Genre_Second_ID", "Genre second", "Director_First_ID", "Cast_First_ID", "Cast_Second_ID", "Cast_Third_ID", "Cast_Fourth_ID", "Cast_Fifth_ID", "Budget ($)", "Box Office Revenue ($)"}),
+  #"Merged queries 2" = Table.NestedJoin(#"Reordered columns 1", {"Director_First_ID"}, Directors, {"ID"}, "Directors", JoinKind.LeftOuter),
+  #"Expanded Directors" = Table.ExpandTableColumn(#"Merged queries 2", "Directors", {"Director"}, {"Director"}),
+  #"Reordered columns 2" = Table.ReorderColumns(#"Expanded Directors", {"Movie Title", "Release Date", "Wikipedia URL", "Genre_First_ID", "Genre", "Genre_Second_ID", "Genre second", "Director_First_ID", "Director", "Cast_First_ID", "Cast_Second_ID", "Cast_Third_ID", "Cast_Fourth_ID", "Cast_Fifth_ID", "Budget ($)", "Box Office Revenue ($)"}),
+  #"Merged queries 3" = Table.NestedJoin(#"Reordered columns 2", {"Cast_First_ID"}, Actors, {"ID"}, "Actors", JoinKind.LeftOuter),
+  #"Expanded Actors" = Table.ExpandTableColumn(#"Merged queries 3", "Actors", {"Actor"}, {"Actor"}),
+  #"Reordered columns 3" = Table.ReorderColumns(#"Expanded Actors", {"Movie Title", "Release Date", "Wikipedia URL", "Genre_First_ID", "Genre", "Genre_Second_ID", "Genre second", "Director_First_ID", "Director", "Cast_First_ID", "Actor", "Cast_Second_ID", "Cast_Third_ID", "Cast_Fourth_ID", "Cast_Fifth_ID", "Budget ($)", "Box Office Revenue ($)"}),
+  #"Merged queries 4" = Table.NestedJoin(#"Reordered columns 3", {"Cast_Second_ID"}, Actors, {"ID"}, "Actors", JoinKind.LeftOuter),
+  #"Expanded Actors 1" = Table.ExpandTableColumn(#"Merged queries 4", "Actors", {"Actor"}, {"Actor.1"}),
+  #"Reordered columns 4" = Table.ReorderColumns(#"Expanded Actors 1", {"Movie Title", "Release Date", "Wikipedia URL", "Genre_First_ID", "Genre", "Genre_Second_ID", "Genre second", "Director_First_ID", "Director", "Cast_First_ID", "Actor", "Cast_Second_ID", "Actor.1", "Cast_Third_ID", "Cast_Fourth_ID", "Cast_Fifth_ID", "Budget ($)", "Box Office Revenue ($)"}),
+  #"Merged queries 5" = Table.NestedJoin(#"Reordered columns 4", {"Cast_Third_ID"}, Actors, {"ID"}, "Actors", JoinKind.LeftOuter),
+  #"Expanded Actors 2" = Table.ExpandTableColumn(#"Merged queries 5", "Actors", {"Actor"}, {"Actor.2"}),
+  #"Reordered columns 5" = Table.ReorderColumns(#"Expanded Actors 2", {"Movie Title", "Release Date", "Wikipedia URL", "Genre_First_ID", "Genre", "Genre_Second_ID", "Genre second", "Director_First_ID", "Director", "Cast_First_ID", "Actor", "Cast_Second_ID", "Actor.1", "Cast_Third_ID", "Actor.2", "Cast_Fourth_ID", "Cast_Fifth_ID", "Budget ($)", "Box Office Revenue ($)"}),
+  #"Merged queries 6" = Table.NestedJoin(#"Reordered columns 5", {"Cast_Fourth_ID"}, Actors, {"ID"}, "Actors", JoinKind.LeftOuter),
+  #"Expanded Actors 3" = Table.ExpandTableColumn(#"Merged queries 6", "Actors", {"Actor"}, {"Actor.3"}),
+  #"Reordered columns 6" = Table.ReorderColumns(#"Expanded Actors 3", {"Movie Title", "Release Date", "Wikipedia URL", "Genre_First_ID", "Genre", "Genre_Second_ID", "Genre second", "Director_First_ID", "Director", "Cast_First_ID", "Actor", "Cast_Second_ID", "Actor.1", "Cast_Third_ID", "Actor.2", "Cast_Fourth_ID", "Actor.3", "Cast_Fifth_ID", "Budget ($)", "Box Office Revenue ($)"}),
+  #"Merged queries 7" = Table.NestedJoin(#"Reordered columns 6", {"Cast_Fifth_ID"}, Actors, {"ID"}, "Actors", JoinKind.LeftOuter),
+  #"Expanded Actors 4" = Table.ExpandTableColumn(#"Merged queries 7", "Actors", {"Actor"}, {"Actor.4"}),
+  #"Reordered columns 7" = Table.ReorderColumns(#"Expanded Actors 4", {"Movie Title", "Release Date", "Wikipedia URL", "Genre_First_ID", "Genre", "Genre_Second_ID", "Genre second", "Director_First_ID", "Director", "Cast_First_ID", "Actor", "Cast_Second_ID", "Actor.1", "Cast_Third_ID", "Actor.2", "Cast_Fourth_ID", "Actor.3", "Cast_Fifth_ID", "Actor.4", "Budget ($)", "Box Office Revenue ($)"}),
+  #"Added custom" = Table.AddColumn(#"Reordered columns 7", "ROI", each ([#"Box Office Revenue ($)"]-[#"Budget ($)"])/[#"Budget ($)"]),
+  #"Changed column type" = Table.TransformColumnTypes(#"Added custom", {{"ROI", Percentage.Type}})
+in
+  #"Changed column type"
+```
