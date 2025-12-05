@@ -17,9 +17,16 @@ Netflix wants to better understand which movie they should produce next, includi
 The final dashboard should be clear, interactive, and visually compelling, enabling Netflix to make data-driven decisions.
 ### Data Source
 Movie Data : The primary dataset used for this analysis is the "Movie Data Homework.xlsx" file, containing detailed information about each movie's performance (box office and budget), actors, directors and genres. 
-u can download original datasource here:[Movie Dataset Excel file](https://github.com/user-attachments/files/23946029/Movie.dashboard.xlsx)
+u can download original datasource here:[Movie Dataset Excel file](https://github.com/user-attachments/files/23946215/NMP.Dashboard.clean.xlsx)
+)
 
 ### Tools
-- Power Query - I used Power Query for Data Cleaning
-- Excel - I used Excel for Data Analysis
-- Pivot Tables - for Creating the dashboard and Visualizations
+1. Power Query - I used Power Query for Data Cleaning
+2. Excel - I used Excel for Data Analysis
+3. Pivot Tables - for Creating the dashboard and Visualizations
+
+### Data Cleaning
+
+- Data loading and inspection.
+- Handling errors, missing values.
+- Data cleaning and formatting. The excel file after the data cleaning & preparation process can be downloaded here -
