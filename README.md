@@ -82,3 +82,7 @@ in
 
 
 Top 5 genres are Action, Comedy, Drama, Sci-Fi, Adventure. I would recommend to Netflix to produce one of these genres as they brought in more in box office revenue based on the data from 2012 to 2016. Horror is the most succesful genre in terms of ROI. Summer releases deliver the highest commercial returnes, while April shows the biggest drop in revenue.
+
+Top 5 best actors
+
+<img width="393" height="139" alt="Screenshot 2025-12-04 at 10 47 04 PM" src="https://github.com/user-attachments/assets/9c3e070c-3be5-40b9-a120-2cda032df9cb" />
