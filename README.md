@@ -31,3 +31,5 @@ u can download original datasource here:[Movie Dataset Excel file](https://githu
 - Handling errors, missing values.
 - Data cleaning and formatting. The excel file after the data cleaning & preparation process can be downloaded here - [Movie Dashboard](https://github.com/user-attachments/files/23950268/MovieDashboard.Github.xlsx)
 
+### Dashboard
+
