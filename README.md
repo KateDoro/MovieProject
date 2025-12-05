@@ -33,3 +33,4 @@ u can download original datasource here:[Movie Dataset Excel file](https://githu
 
 ### Dashboard
 
+<img width="679" height="486" alt="Screenshot 2025-12-04 at 9 17 41 PM" src="https://github.com/user-attachments/assets/e3e4b270-0e24-4467-b78e-b7c2f201ebb3" />
